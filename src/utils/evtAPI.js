@@ -13,7 +13,7 @@ import {bridge,errorHandle,toJson,toStringify} from './bridge'
 window.randomPrivateKey = async () => {
   let body
   try {
-    body = toStringify(await EVT.EvtKey.randomPrivateKey())
+    body = await EVT.EvtKey.randomPrivateKey()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -24,7 +24,7 @@ window.randomPrivateKey = async () => {
 window.privateToPublic = (privateKey) => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.privateToPublic(privateKey))
+    body = EVT.EvtKey.privateToPublic(privateKey)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -35,7 +35,7 @@ window.privateToPublic = (privateKey) => {
 window.seedPrivateKey = (seed) => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.seedPrivateKey(seed))
+    body = EVT.EvtKey.seedPrivateKey(seed)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -46,7 +46,7 @@ window.seedPrivateKey = (seed) => {
 window.isValidPrivateKey = (key) => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.isValidPrivateKey(key))
+    body = EVT.EvtKey.isValidPrivateKey(key)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -57,7 +57,7 @@ window.isValidPrivateKey = (key) => {
 window.isValidPublicKey = (key) => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.isValidPublicKey(key))
+    body = EVT.EvtKey.isValidPublicKey(key)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -68,7 +68,7 @@ window.isValidPublicKey = (key) => {
 window.isValidAddress = (address) => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.isValidAddress(address))
+    body = EVT.EvtKey.isValidAddress(address)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -79,7 +79,7 @@ window.isValidAddress = (address) => {
 window.random32BytesAsHex = async () => {
   let body
   try {
-    body = toStringify(await EVT.EvtKey.random32BytesAsHex())
+    body = await EVT.EvtKey.random32BytesAsHex()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -90,7 +90,7 @@ window.random32BytesAsHex = async () => {
 window.randomName128 = async () => {
   let body
   try {
-    body = toStringify(await EVT.EvtKey.randomName128())
+    body = await EVT.EvtKey.randomName128()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -101,7 +101,7 @@ window.randomName128 = async () => {
 window.getNullAddress = () => {
   let body
   try {
-    body = toStringify(EVT.EvtKey.getNullAddress(address))
+    body = EVT.EvtKey.getNullAddress(address)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -128,8 +128,8 @@ window.EVTInit = () => {
       keyProvider: () => {
         return new Promise((res, rej) => {
           window.needPrivateKeyResponse = res
-          bridge('needPrivateKey', '')
-          //res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
+          //bridge('needPrivateKey', '')
+          res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
         });
       }
     });
@@ -145,7 +145,7 @@ window.EVTInit = () => {
 window.getInfo = async () => {
   let body
   try {
-    body = toStringify(await apiCaller.getInfo())
+    body = await apiCaller.getInfo()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -156,7 +156,7 @@ window.getInfo = async () => {
 window.getHeadBlockHeaderState = async () => {
   let body
   try {
-    body = toStringify(await apiCaller.getHeadBlockHeaderState())
+    body = await apiCaller.getHeadBlockHeaderState()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -167,7 +167,7 @@ window.getHeadBlockHeaderState = async () => {
 window.getOwnedTokens = async (publicKeys) => {
   let body
   try {
-    body = toStringify(await apiCaller.getOwnedTokens(publicKeys))
+    body = await apiCaller.getOwnedTokens(publicKeys)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -178,7 +178,7 @@ window.getOwnedTokens = async (publicKeys) => {
 window.getManagedGroups = async (publicKeys) => {
   let body
   try {
-    body = toStringify(await apiCaller.getManagedGroups(publicKeys))
+    body = await apiCaller.getManagedGroups(publicKeys)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -189,7 +189,7 @@ window.getManagedGroups = async (publicKeys) => {
 window.getCreatedDomains = async (publicKeys) => {
   let body
   try {
-    body = toStringify(await apiCaller.getCreatedDomains(publicKeys))
+    body = await apiCaller.getCreatedDomains(publicKeys)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -200,7 +200,7 @@ window.getCreatedDomains = async (publicKeys) => {
 window.getCreatedFungibles = async (publicKeys) => {
   let body
   try {
-    body = toStringify(await apiCaller.getCreatedFungibles(publicKeys))
+    body = await apiCaller.getCreatedFungibles(publicKeys)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -211,7 +211,7 @@ window.getCreatedFungibles = async (publicKeys) => {
 window.getActions = async (params) => {
   let body
   try {
-    body = toStringify(await apiCaller.getActions(params))
+    body = await apiCaller.getActions(params)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -222,7 +222,7 @@ window.getActions = async (params) => {
 window.getToken = async (domain, id) => {
   let body
   try {
-    body = toStringify(await apiCaller.getToken(domain, id))
+    body = await apiCaller.getToken(domain, id)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -236,7 +236,7 @@ window.getFungibleBalance = async (address, symbolId) => {
   }
   let body
   try {
-    body = toStringify(await apiCaller.getFungibleBalance(address, symbolId))
+    body = await apiCaller.getFungibleBalance(address, symbolId)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -247,7 +247,7 @@ window.getFungibleBalance = async (address, symbolId) => {
 window.getTransactionDetailById = async (id) => {
   let body
   try {
-    body = toStringify(await apiCaller.getTransactionDetailById(id))
+    body = await apiCaller.getTransactionDetailById(id)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -258,7 +258,7 @@ window.getTransactionDetailById = async (id) => {
 window.getDomainDetail = async (name) => {
   let body
   try {
-    body = toStringify(await apiCaller.getDomainDetail(name))
+    body = await apiCaller.getDomainDetail(name)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -269,7 +269,7 @@ window.getDomainDetail = async (name) => {
 window.getGroupDetail = async (name) => {
   let body
   try {
-    body = toStringify(await apiCaller.getGroupDetail(name))
+    body = await apiCaller.getGroupDetail(name)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -280,7 +280,7 @@ window.getGroupDetail = async (name) => {
 window.getFungibleActionsByAddress = async (symbolId, address, skip = 0, take = 10) => {
   let body
   try {
-    body = toStringify(await apiCaller.getFungibleActionsByAddress(symbolId, address, skip, take))
+    body = await apiCaller.getFungibleActionsByAddress(symbolId, address, skip, take)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -291,7 +291,7 @@ window.getFungibleActionsByAddress = async (symbolId, address, skip = 0, take = 
 window.getTransactionsDetailOfPublicKeys = async (publickeys, skip = 0, take = 10) => {
   let body
   try {
-    body = toStringify(await apiCaller.getTransactionsDetailOfPublicKeys(publickeys, skip, take))
+    body = await apiCaller.getTransactionsDetailOfPublicKeys(publickeys, skip, take)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -302,7 +302,7 @@ window.getTransactionsDetailOfPublicKeys = async (publickeys, skip = 0, take = 1
 window.getFungibleSymbolDetail = async (sym_id) => {
   let body
   try {
-    body = toStringify(await apiCaller.getFungibleSymbolDetail(sym_id))
+    body = await apiCaller.getFungibleSymbolDetail(sym_id)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -313,7 +313,7 @@ window.getFungibleSymbolDetail = async (sym_id) => {
 window.getRequiredKeysForSuspendedTransaction = async (proposalName, availableKeys) => {
   let body
   try {
-    body = toStringify(await apiCaller.getRequiredKeysForSuspendedTransaction(proposalName, availableKeys))
+    body = await apiCaller.getRequiredKeysForSuspendedTransaction(proposalName, availableKeys)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -325,7 +325,7 @@ window.getStatusOfEvtLink = async (options) => {
   options = toJson(options)
   let body
   try {
-    body = toStringify(await apiCaller.getStatusOfEvtLink(options))
+    body = await apiCaller.getStatusOfEvtLink(options)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -336,7 +336,7 @@ window.getStatusOfEvtLink = async (options) => {
 window.getSuspendedTransactionDetail = async (proposalName) => {
   let body
   try {
-    body = toStringify(await apiCaller.getSuspendedTransactionDetail(proposalName))
+    body = await apiCaller.getSuspendedTransactionDetail(proposalName)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -350,13 +350,13 @@ window.getEstimatedChargeForTransaction = async (newdomain, json, config) => {
   let body
   try {
     if (config) {
-      body = toStringify(await apiCaller.getEstimatedChargeForTransaction(config,
+      body = await apiCaller.getEstimatedChargeForTransaction(config,
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     } else {
-      body = toStringify(await apiCaller.getEstimatedChargeForTransaction(
+      body = await apiCaller.getEstimatedChargeForTransaction(
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     }
   } catch (error) {
     body = errorHandle(error)
@@ -371,13 +371,13 @@ window.generateUnsignedTransaction = async (newdomain, json, config) => {
   let body
   try {
     if (config) {
-      body = toStringify(await apiCaller.generateUnsignedTransaction(config,
+      body = await apiCaller.generateUnsignedTransaction(config,
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     } else {
-      body = toStringify(await apiCaller.generateUnsignedTransaction(
+      body = await apiCaller.generateUnsignedTransaction(
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     }
   } catch (error) {
     body = errorHandle(error)
@@ -392,13 +392,13 @@ window.pushTransaction = async (newdomain, json, config) => {
   let body
   try {
     if (config) {
-      body = toStringify(await apiCaller.pushTransaction(config,
+      body = await apiCaller.pushTransaction(config,
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     } else {
-      body = toStringify(await apiCaller.pushTransaction(
+      body = await apiCaller.pushTransaction(
         new EVT.EvtAction(newdomain, json)
-      ))
+      )
     }
   } catch (error) {
     body = errorHandle(error)
@@ -411,7 +411,7 @@ window.pushTransaction = async (newdomain, json, config) => {
 window.getUniqueLinkId = async () => {
   let body
   try {
-    body = toStringify(await EVT.EvtLink.getUniqueLinkId())
+    body = await EVT.EvtLink.getUniqueLinkId()
   } catch (error) {
     body = errorHandle(error)
   }
@@ -430,7 +430,7 @@ window.getEVTLinkQrImage = (qrType, qrParams, imgParams) => {
         bridge('getEVTLinkQrImageCallback', errorHandle({isServerError: false}))
         return;
       }
-      bridge('getEVTLinkQrImageCallback', toStringify(res.dataUrl))
+      bridge('getEVTLinkQrImageCallback', res.dataUrl)
     })
   } catch (error) {
     body = errorHandle(error)
@@ -443,7 +443,7 @@ window.parseEvtLink = async (text, options) => {
   options = toJson(options)
   let body
   try {
-    body = toStringify(await EVT.EvtLink.parseEvtLink(text, options))
+    body = await EVT.EvtLink.parseEvtLink(text, options)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -455,7 +455,7 @@ window.getEvtLinkForEveriPass = async (params) => {
   params = toJson(params)
   let body
   try {
-    body = toStringify(await EVT.EvtLink.getEvtLinkForEveriPass(params))
+    body = await EVT.EvtLink.getEvtLinkForEveriPass(params)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -467,7 +467,7 @@ window.getEvtLinkForEveriPay = async (params) => {
   params = toJson(params)
   let body
   try {
-    body = toStringify(await EVT.EvtLink.getEvtLinkForEveriPay(params))
+    body = await EVT.EvtLink.getEvtLinkForEveriPay(params)
   } catch (error) {
     body = errorHandle(error)
   }
@@ -479,7 +479,7 @@ window.getEvtLinkForPayeeCode = async (params) => {
   params = toJson(params)
   let body
   try {
-    body = toStringify(await EVT.EvtLink.getEvtLinkForPayeeCode(params))
+    body = await EVT.EvtLink.getEvtLinkForPayeeCode(params)
   } catch (error) {
     body = errorHandle(error)
   }

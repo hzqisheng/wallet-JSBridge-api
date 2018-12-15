@@ -1,6 +1,6 @@
 import './utils/evtAPI'
 import './utils/bip39API'
-import {bridge,errorHandle,toStringify} from './utils/bridge'
+import {bridge,errorHandle} from './utils/bridge'
 import EVT from 'evtjs';
 import bip39 from 'bip39'
 
@@ -19,13 +19,13 @@ window.createEVTWallet = async (password) => {
     let privateKey = await EVT.EvtKey.seedPrivateKey(seed);
     let publicKey = EVT.EvtKey.privateToPublic(privateKey);
 
-    body = JSON.stringify({
+    body = {
       mnemoinc: mnemoinc,
       privateKey: privateKey,
       publicKey: publicKey,
       password: password,
       type: 'EVT'
-    })
+    }
   } catch (error) {
     body = errorHandle(error)
   }
@@ -41,13 +41,13 @@ window.importEVTWallet = async (mnemoinc, password) => {
     let privateKey = await EVT.EvtKey.seedPrivateKey(seed);
     let publicKey = EVT.EvtKey.privateToPublic(privateKey)
 
-    body = JSON.stringify({
+    body = {
       mnemoinc: mnemoinc,
       privateKey: privateKey,
       publicKey: publicKey,
       password: password,
       type: 'EVT'
-    })
+    }
   } catch (error) {
     body = errorHandle(error)
   }
@@ -63,7 +63,7 @@ window.getEVTFungiblesList = async(publicKeys)=>{
       body.push(detail)
     })
     Promise.all(body).then((result)=>{
-      bridge('getEVTFungiblesListCallback', toStringify(result))
+      bridge('getEVTFungiblesListCallback', result)
     }).catch((error)=>{
       body = errorHandle(error)
       bridge('getEVTFungiblesListCallback', body)

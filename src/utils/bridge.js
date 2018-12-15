@@ -44,26 +44,32 @@ export const toJson = (body) => {
 // error
 export const errorHandle = (error) => {
   if (error.isServerError) {
-    return 'isServerError'
+    return {code: 0, message: 'isServerError'}
   } else {
-    return 'isClientError'
+    return {code: 0, message: 'isClientError'}
   }
 }
 
 // Call the iOS or Android  method name handle wrapper
 export const bridge = (handle, body) => {
+  if (body.code === 0) {} else {
+    body = {
+      code: 1,
+      data: body
+    }
+  }
   console.log(handle, body);
   if (browser.versions.ios) {
-    if(window.webkit.messageHandlers[handle]){
-      window.webkit.messageHandlers[handle].postMessage({content: body});
-    }else{
+    if (window.webkit.messageHandlers[handle]) {
+      window.webkit.messageHandlers[handle].postMessage(body);
+    } else {
       throw new Error('未检测到回调方法')
     }
   }
   if (browser.versions.android) {
-    if(window.test[handle]){
+    if (window.test[handle]) {
       window.test[handle](body)
-    }else{
+    } else {
       throw new Error('未检测到回调方法')
     }
   }
