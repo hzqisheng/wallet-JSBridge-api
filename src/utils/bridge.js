@@ -44,9 +44,9 @@ export const toJson = (body) => {
 // error
 export const errorHandle = (error) => {
   if (error.isServerError) {
-    return {code: 0, message: 'isServerError'}
+    return {code: 0,data:'',message: 'isServerError'}
   } else {
-    return {code: 0, message: 'isClientError'}
+    return {code: 0,data:'',message: 'isClientError'}
   }
 }
 
@@ -55,10 +55,12 @@ export const bridge = (handle, body) => {
   if (body.code === 0) {} else {
     body = {
       code: 1,
-      data: body
+      data: body,
+      message:''
     }
   }
-  console.log(handle, body);
+  console.log(handle, JSON.stringify(body));
+
   if (browser.versions.ios) {
     if (window.webkit.messageHandlers[handle]) {
       window.webkit.messageHandlers[handle].postMessage(body);
@@ -67,6 +69,7 @@ export const bridge = (handle, body) => {
     }
   }
   if (browser.versions.android) {
+    body = JSON.stringify(body)
     if (window.test[handle]) {
       window.test[handle](body)
     } else {

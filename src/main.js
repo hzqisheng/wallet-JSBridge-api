@@ -74,3 +74,26 @@ window.getEVTFungiblesList = async(publicKeys)=>{
   }
 }
 
+window.getEVTDomainsList = async(publicKeys)=>{
+  let body = []
+  try {
+    let arr = await window.apiCaller.getCreatedDomains(publicKeys)
+    arr.forEach(item => {
+      let detail = window.apiCaller.getDomainDetail(item.name)
+      body.push(detail)
+    })
+    Promise.all(body).then((result)=>{
+      bridge('getEVTDomainsListCallback', result)
+    }).catch((error)=>{
+      body = errorHandle(error)
+      bridge('getEVTDomainsListCallback', body)
+    })
+  } catch (error) {
+    body = errorHandle(error)
+    bridge('getEVTDomainsListCallback', body)
+  }
+}
+
+
+
+
