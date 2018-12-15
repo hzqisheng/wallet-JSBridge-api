@@ -1,6 +1,5 @@
 import './utils/evtAPI'
 import './utils/bip39API'
-import './utils/bridge'
 import {bridge,errorHandle,toStringify} from './utils/bridge'
 import EVT from 'evtjs';
 import bip39 from 'bip39'
