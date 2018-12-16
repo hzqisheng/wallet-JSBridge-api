@@ -44,9 +44,10 @@ export const toJson = (body) => {
 // error
 export const errorHandle = (error) => {
   if (error.isServerError) {
-    return {code: 0,data:'',message: 'isServerError'}
+    return {code: 0,data:'',message: 'isServerError:'+error.message}
+
   } else {
-    return {code: 0,data:'',message: 'isClientError'}
+    return {code: 0,data:'',message: 'isClientError:'+error.message}
   }
 }
 

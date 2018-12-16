@@ -128,8 +128,8 @@ window.EVTInit = () => {
       keyProvider: () => {
         return new Promise((res, rej) => {
           window.needPrivateKeyResponse = res
-          bridge('needPrivateKey', '')
-          //res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
+          //bridge('needPrivateKey', '')
+          res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
         });
       }
     });
