@@ -58,6 +58,7 @@ window.getEVTFungiblesList = async(publicKeys)=>{
   let body = []
   try {
     let arr = await window.apiCaller.getCreatedFungibles(publicKeys)
+    console.log(arr)
     arr.ids.forEach(item => {
       let detail = window.apiCaller.getFungibleSymbolDetail(item)
       body.push(detail)
@@ -78,6 +79,7 @@ window.getEVTDomainsList = async(publicKeys)=>{
   let body = []
   try {
     let arr = await window.apiCaller.getCreatedDomains(publicKeys)
+    console.log(arr)
     arr.forEach(item => {
       let detail = window.apiCaller.getDomainDetail(item.name)
       body.push(detail)

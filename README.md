@@ -290,7 +290,6 @@ publicKeys | 是 | string | 公钥
 - `qrType`：可以是everiPass, everiPay, payeeCode之一.
 - `qrParams`：与getEvtLinkForEveriPass, getEvtLinkForEveriPay和getEvtLinkForPayeeCode的param参数相同. 请参考他们.
 - `imgPrams`：有一个名为autoReload的key, 通常你应该将它设置为true.
-- `callback`：一个带有两个参数的函数：error和response. response包含dataUrl用于image和rawText用于EvtLink的原始值.
 
 #### 返回示例
 ```
