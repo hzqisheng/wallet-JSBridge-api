@@ -426,11 +426,10 @@ window.getEVTLinkQrImage = (qrType, qrParams, imgParams) => {
   try {
     EVT.EvtLink.getEVTLinkQrImage(qrType, qrParams, imgParams, (err, res) => {
       if (err) {
-        console.log(e.message);
         bridge('getEVTLinkQrImageCallback', errorHandle({isServerError: false}))
         return;
       }
-      bridge('getEVTLinkQrImageCallback', res.dataUrl)
+      bridge('getEVTLinkQrImageCallback', res)
     })
   } catch (error) {
     body = errorHandle(error)
@@ -488,6 +487,8 @@ window.getEvtLinkForPayeeCode = async (params) => {
 
 
 
+
+//getEVTLinkQrImage('payeecode',{address:'EVT6Gx3o9P4BAmcjxGenBgmAQ82bgfvS8GHgrFPUPzYUn6uxWdLFW'},{autoReload: true})
 
 
 

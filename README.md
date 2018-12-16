@@ -295,7 +295,11 @@ publicKeys | 是 | string | 公钥
 ```
 {
 	"code": 1,
-	"data": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA9AAAAPQCAYAAADerpPoAAAgAElEQVR4XuzcwY5kyY5kW4///+hoXLz5a0evA+xgqtQ4aULZFKoZ0/PWn79///792f+NwAiMwAiMwAiMwAiMwAiMwAiMwAj8/xL4swN6CRmBERiBERiBERiBERiBERiBERiB/zuBHdDggg==",
+	"data": {
+		"dataUrl": "data:image/png;base64,iV2522",
+		"rawText": "https://evt.li/03$5CLY539F21:FCRD2-B6URN*98O4SMC:N82YNDXI5LQ$03OFA6ED8HX0AK3OBCTUOLRE7P1ZQDS:5R*MD+",
+		"timeConsumed": 4
+	},
 	"message": ""
 }
 ```
