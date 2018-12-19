@@ -75,11 +75,11 @@ window.getEVTFungiblesList = async(publicKeys)=>{
   }
 }
 
+
 window.getEVTDomainsList = async(publicKeys)=>{
   let body = []
   try {
     let arr = await window.apiCaller.getCreatedDomains(publicKeys)
-    console.log(arr)
     arr.forEach(item => {
       let detail = window.apiCaller.getDomainDetail(item.name)
       body.push(detail)
@@ -96,6 +96,26 @@ window.getEVTDomainsList = async(publicKeys)=>{
   }
 }
 
+
+window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
+  let body = []
+  try {
+    let arr = await window.apiCaller.getFungibleBalance(publicKeys,symbolId)
+    arr.forEach(item => {
+      let detail = window.apiCaller.getFungibleSymbolDetail(Number(item.split('#')[1]))
+      body.push(detail)
+    })
+    Promise.all(body).then((result)=>{
+      bridge('getEVTFungibleBalanceListCallback', result)
+    }).catch((error)=>{
+      body = errorHandle(error)
+      bridge('getEVTFungibleBalanceListCallback', body)
+    })
+  } catch (error) {
+    body = errorHandle(error)
+    bridge('getEVTFungibleBalanceListCallback', body)
+  }
+}
 
 
 
