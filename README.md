@@ -208,6 +208,7 @@ symbolId | 否 | number | symbolId
 {
 	"code": 1,
 	"data": [{
+	    "asset": "12.000 S＃1",
 		"name": "Pinned.EVT",
 		"sym_name": "PEVT",
 		"sym": "5,S#2",
