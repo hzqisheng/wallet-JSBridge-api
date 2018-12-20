@@ -103,12 +103,12 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
     let arr = await window.apiCaller.getFungibleBalance(publicKeys,symbolId)
     arr.forEach(item => {
       let detail = window.apiCaller.getFungibleSymbolDetail(Number(item.split('#')[1]))
-      console.log(detail)
-      detail.asset = item
-      console.log(detail)
       body.push(detail)
     })
     Promise.all(body).then((result)=>{
+      arr.forEach((item,i)=>{
+        result[i].asset = item
+      })
       bridge('getEVTFungibleBalanceListCallback', result)
     }).catch((error)=>{
       body = errorHandle(error)
