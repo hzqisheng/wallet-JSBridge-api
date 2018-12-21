@@ -106,6 +106,9 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
       body.push(detail)
     })
     Promise.all(body).then((result)=>{
+      arr.forEach((item,i)=>{
+        result[i].asset = item
+      })
       bridge('getEVTFungibleBalanceListCallback', result)
     }).catch((error)=>{
       body = errorHandle(error)
