@@ -209,6 +209,7 @@ window.getCreatedFungibles = async (publicKeys) => {
 
 
 window.getActions = async (params) => {
+  params = toJson(params)
   let body
   try {
     body = await apiCaller.getActions(params)
