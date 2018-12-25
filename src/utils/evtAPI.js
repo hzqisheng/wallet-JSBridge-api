@@ -128,8 +128,8 @@ window.EVTInit = () => {
       keyProvider: () => {
         return new Promise((res, rej) => {
           window.needPrivateKeyResponse = res
-          bridge('needPrivateKey', '')
-          //res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
+          //bridge('needPrivateKey', '')
+          res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
         });
       }
     });
@@ -174,6 +174,17 @@ window.getOwnedTokens = async (publicKeys) => {
   bridge('getOwnedTokensCallback', body)
 }
 
+
+/*window.getTokens = async (publicKeys) => {
+  console.log(apiCaller.getTokens)
+  let body
+  try {
+    body = await apiCaller.getTokens(publicKeys)
+  } catch (error) {
+    body = errorHandle(error)
+  }
+  bridge('getTokensCallback', body)
+}*/
 
 window.getManagedGroups = async (publicKeys) => {
   let body
@@ -419,25 +430,29 @@ window.getUniqueLinkId = async () => {
   bridge('getUniqueLinkIdCallback', body)
 }
 
-
-window.getEVTLinkQrImage = (qrType, qrParams, imgParams) => {
+let intervalId = 0
+window.getEVTLinkQrImage = async (qrType, qrParams, imgParams) => {
   qrParams = toJson(qrParams)
   imgParams = toJson(imgParams)
   let body
   try {
-    EVT.EvtLink.getEVTLinkQrImage(qrType, qrParams, imgParams, (err, res) => {
+    body = await EVT.EvtLink.getEVTLinkQrImage(qrType, qrParams, imgParams, (err, res) => {
       if (err) {
         bridge('getEVTLinkQrImageCallback', errorHandle({isServerError: false}))
         return;
       }
       bridge('getEVTLinkQrImageCallback', res)
     })
+    intervalId = body.intervalId
   } catch (error) {
     body = errorHandle(error)
     bridge('getEVTLinkQrImageCallback', body)
   }
 }
 
+window.stopEVTLinkQrImageReload = ()=>{
+  window.clearInterval(intervalId)
+}
 
 window.parseEvtLink = async (text, options) => {
   options = toJson(options)

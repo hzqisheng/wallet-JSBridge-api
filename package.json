@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "bip39": "^2.5.0",
-    "evtjs": "^4.7.0"
+    "evtjs": "^5.0.0"
   },
   "devDependencies": {
     "@vue/cli-service": "^3.0.0",

@@ -371,6 +371,8 @@ symbolId | 否 | number | symbolId
 }
 ```
 
+### stopEVTLinkQrImageReload() // 取消getEVTLinkQrImage重新加载，没有返回值
+
 ### parseEvtLink(text, options)
 
 ### getEvtLinkForEveriPass(params)
