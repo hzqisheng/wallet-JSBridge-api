@@ -288,7 +288,11 @@ symbolId | 否 | number | symbolId
 
 ### getHeadBlockHeaderState()
 
+### getTransactionIdsInBlock(blockId)
+
 ### getOwnedTokens(publicKeys)
+
+### getTokens(domain, [skip], [take])
 
 ### getManagedGroups(publicKeys)
 

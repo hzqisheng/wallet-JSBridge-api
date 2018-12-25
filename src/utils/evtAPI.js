@@ -163,6 +163,15 @@ window.getHeadBlockHeaderState = async () => {
   bridge('getHeadBlockHeaderStateCallback', body)
 }
 
+window.getTransactionIdsInBlock = async (blockId) => {
+  let body
+  try {
+    body = await apiCaller.getTransactionIdsInBlock(blockId)
+  } catch (error) {
+    body = errorHandle(error)
+  }
+  bridge('getTransactionIdsInBlockCallback', body)
+}
 
 window.getOwnedTokens = async (publicKeys) => {
   let body
@@ -175,16 +184,15 @@ window.getOwnedTokens = async (publicKeys) => {
 }
 
 
-/*window.getTokens = async (publicKeys) => {
-  console.log(apiCaller.getTokens)
+window.getTokens = async (domain, skip = 0, take = 10) => {
   let body
   try {
-    body = await apiCaller.getTokens(publicKeys)
+    body = await apiCaller.getTokens(domain,skip,take)
   } catch (error) {
     body = errorHandle(error)
   }
   bridge('getTokensCallback', body)
-}*/
+}
 
 window.getManagedGroups = async (publicKeys) => {
   let body
