@@ -112,7 +112,6 @@ window.getNullAddress = () => {
 //apiCaller
 
 let apiCaller = null
-
 window.needPrivateKeyResponse = null
 
 window.EVTInit = () => {
@@ -128,8 +127,11 @@ window.EVTInit = () => {
       keyProvider: () => {
         return new Promise((res, rej) => {
           window.needPrivateKeyResponse = res
-          //bridge('needPrivateKey', '')
-          res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
+          if(process.env.NODE_ENV === 'development'){
+            res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
+          }else{
+            bridge('needPrivateKey', '')
+          }
         });
       }
     });
