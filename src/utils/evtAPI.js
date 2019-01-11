@@ -512,8 +512,6 @@ window.getEvtLinkForPayeeCode = async (params) => {
 }
 
 
-
-
 //getEVTLinkQrImage('payeecode',{address:'EVT6Gx3o9P4BAmcjxGenBgmAQ82bgfvS8GHgrFPUPzYUn6uxWdLFW'},{autoReload: true})
 
 

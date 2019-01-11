@@ -60,8 +60,8 @@ export const bridge = (handle, body) => {
       message:''
     }
   }
-  console.log(handle, JSON.stringify(body));
-
+  body = JSON.stringify(body)
+  console.log(handle, body);
   if (browser.versions.ios) {
     if (window.webkit.messageHandlers[handle]) {
       window.webkit.messageHandlers[handle].postMessage(body);
@@ -70,7 +70,6 @@ export const bridge = (handle, body) => {
     }
   }
   if (browser.versions.android) {
-    body = JSON.stringify(body)
     if (window.test[handle]) {
       window.test[handle](body)
     } else {
