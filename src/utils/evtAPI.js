@@ -408,18 +408,18 @@ window.generateUnsignedTransaction = async (newdomain, json, config) => {
 }
 
 
-window.pushTransaction = async (newdomain, json, config) => {
+window.pushTransaction = async (newdomain, json, config,domain,key) => {
   json = toJson(json)
   config = toJson(config)
   let body
   try {
     if (config) {
       body = await apiCaller.pushTransaction(config,
-        new EVT.EvtAction(newdomain, json)
+        new EVT.EvtAction(newdomain, json,domain,key)
       )
     } else {
       body = await apiCaller.pushTransaction(
-        new EVT.EvtAction(newdomain, json)
+        new EVT.EvtAction(newdomain, json,domain,key)
       )
     }
   } catch (error) {
