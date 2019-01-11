@@ -126,6 +126,7 @@ window.EVTInit = () => {
       endpoint: network,
       keyProvider: () => {
         return new Promise((res, rej) => {
+          console.log('needPrivateKeyResponse')
           window.needPrivateKeyResponse = res
           if(process.env.NODE_ENV === 'development'){
             res('5JrNgyyNDqz2pikijgdJwUktV8xkS7JPPSURr2YwxkhKPzm2eRi');
@@ -411,16 +412,20 @@ window.generateUnsignedTransaction = async (newdomain, json, config) => {
 window.pushTransaction = async (newdomain, json, config,domain,key) => {
   json = toJson(json)
   config = toJson(config)
+  newdomain = newdomain.split(',')
+  if(!Array.isArray(json)){
+    json = [json]
+  }
   let body
+  body = []
+  newdomain.forEach((item,index) => {
+    body.push(new EVT.EvtAction(item, json[index],domain,key))
+  })
   try {
-    if (config) {
-      body = await apiCaller.pushTransaction(config,
-        new EVT.EvtAction(newdomain, json,domain,key)
-      )
-    } else {
-      body = await apiCaller.pushTransaction(
-        new EVT.EvtAction(newdomain, json,domain,key)
-      )
+    if(config){
+      body = await apiCaller.pushTransaction(config,...body)
+    }else{
+      body = await apiCaller.pushTransaction(...body)
     }
   } catch (error) {
     body = errorHandle(error)

@@ -328,7 +328,7 @@ symbolId | 否 | number | symbolId
 
 ### generateUnsignedTransaction(actionName, abiStructure, config)
 
-### pushTransaction(actionName, abiStructure, config)
+### pushTransaction(actionName, abiStructure, config) 或 pushTransaction('actionName,actionName', [abiStructure,abiStructure], config)
 #### 说明
 将transaction推送到链. transaction由一些actions组成. 通常, action是可写API的接口. 几乎所有可写API都包含在事务中.
 
