@@ -2,6 +2,7 @@
  * Created by Administrator on 2018/12/5.
  */
 
+import excodes from './excodes'
 // Browser kernel
 const browser = {
   versions: function () {
@@ -41,11 +42,19 @@ export const toJson = (body) => {
   }
 }
 
+const errorHandel = (code)=>{
+  let obj = {}
+  excodes.forEach((item)=>{
+    if(item.code == code){
+      obj = {cn:item.cn||item.en,en:item.en}
+    }
+  })
+  return obj
+}
 // error
 export const errorHandle = (error) => {
   if (error.isServerError) {
-    return {code: 0,data:'',message: 'isServerError:'+error.message}
-
+    return {code: 0,data:'',message: errorHandel(error.serverError.code)}
   } else {
     return {code: 0,data:'',message: 'isClientError:'+error.message}
   }
