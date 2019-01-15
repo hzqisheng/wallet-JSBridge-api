@@ -114,14 +114,19 @@ window.getNullAddress = () => {
 let apiCaller = null
 window.needPrivateKeyResponse = null
 
+let network = {
+  host: 'mainnet14.everitoken.io',
+  port: 443,
+  protocol: 'https'
+};
+
+window.chageNetwork = (obj) => {
+  network = toJson(obj)
+}
+
 window.EVTInit = () => {
   let body = ''
   try {
-    const network = {
-      host: 'mainnet14.everitoken.io',
-      port: 443,
-      protocol: 'https'
-    };
     apiCaller = EVT({
       endpoint: network,
       keyProvider: () => {
