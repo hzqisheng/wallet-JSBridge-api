@@ -120,7 +120,7 @@ let network = {
   protocol: 'https'
 };
 
-window.chageNetwork = (obj) => {
+window.changeNetwork = (obj) => {
   network = toJson(obj)
 }
 
