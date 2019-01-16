@@ -4,6 +4,11 @@
 
 export default [
   {
+    "name": "network_error",
+    "code": "0",
+    "en": "network error"
+  },
+  {
     "name": "database_exception",
     "code": "3010000",
     "en": "Database exception"

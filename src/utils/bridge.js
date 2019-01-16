@@ -56,7 +56,7 @@ export const errorHandle = (error) => {
   if (error.isServerError) {
     return {code: 0,data:'',message: errorHandel(error.serverError.code)}
   } else {
-    return {code: 0,data:'',message: 'isClientError:'+error.message}
+    return {code: 0,data:'',message: {cn:'isClientError:'+error.message,en:'isClientError:'+error.message}}
   }
 }
 
@@ -66,7 +66,7 @@ export const bridge = (handle, body) => {
     body = {
       code: 1,
       data: body,
-      message:''
+      message: {}
     }
   }
   body = JSON.stringify(body)
