@@ -260,6 +260,24 @@ symbolId | 否 | number | symbolId
 }
 ```
 
+### getAPPVersion() 
+#### 说明
+获取当前APP版本
+
+#### 参数
+无
+
+#### 返回示例
+```
+{
+	"code": 1,
+	"data": {
+		"version": "1.0.1"
+	},
+	"message": {}
+}
+```
+
 ## evtAPI
 
 这里只列出两个修改了参数的方法（`pushTransaction`、`getEVTLinkQrImage`）,其它方法API请查看[evtAPI文档](https://www.everitoken.io/developers/apis,_sdks_and_tools/javascript_sdk_reference/en_US)

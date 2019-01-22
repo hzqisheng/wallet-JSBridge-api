@@ -3,7 +3,7 @@ import './utils/bip39API'
 import {bridge,errorHandle} from './utils/bridge'
 import EVT from 'evtjs';
 import bip39 from 'bip39'
-
+import axios from 'axios'
 
 // create EVTWallet
 window.createEVTWallet = async (password) => {
@@ -120,5 +120,20 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
   }
 }
 
-
+window.getAPPVersion = async() => {
+  let body
+  try {
+    let res = await axios.get('http://server-config.hzqisheng.cn/versions.json')
+    if (res.status == 200) {
+      body = res.data
+    } else {
+      const error = new Error('Version fetch failed')
+      body = errorHandle(error)
+    }
+  } catch (e){
+    const error = new Error('Version fetch failed')
+    body = errorHandle(error)
+  }
+  bridge('getAPPVersionCallback', body)
+}
 

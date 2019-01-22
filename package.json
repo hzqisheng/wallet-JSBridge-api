@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "bip39": "^2.5.0",
-    "evtjs": "^5.0.0"
+    "evtjs": "^5.0.0",
+    "axios": "^0.16.2"
   },
   "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.3.0",
     "@vue/cli-service": "^3.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
