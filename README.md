@@ -278,6 +278,23 @@ symbolId | 否 | number | symbolId
 }
 ```
 
+### randomValidSymbolId() 
+#### 说明
+获取一个有效的`symbolId`(最小3位最大9位的数字)
+
+#### 参数
+无
+
+#### 返回示例
+```
+{
+	"code": 1,
+	"data": 264,
+	"message": {}
+}
+```
+
+
 ## evtAPI
 
 这里只列出两个修改了参数的方法（`pushTransaction`、`getEVTLinkQrImage`）,其它方法API请查看[evtAPI文档](https://www.everitoken.io/developers/apis,_sdks_and_tools/javascript_sdk_reference/en_US)

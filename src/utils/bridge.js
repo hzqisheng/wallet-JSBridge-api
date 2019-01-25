@@ -24,6 +24,18 @@ const browser = {
   }()
 };
 
+export const randomSymbolId = (digit) => {
+  let num = ''
+  for(let i=0;i<digit;i++){
+    if(i === 0){
+      num += Math.floor(Math.random()*9)+1
+    }else{
+      num += Math.floor(Math.random()*10)
+    }
+  }
+  return Number(num)
+}
+
 // Non-string to string
 export const toStringify = (body) => {
   if (typeof body !== 'string') {

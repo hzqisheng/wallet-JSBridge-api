@@ -1,6 +1,6 @@
 import './utils/evtAPI'
 import './utils/bip39API'
-import {bridge,errorHandle} from './utils/bridge'
+import {bridge,errorHandle,randomSymbolId} from './utils/bridge'
 import EVT from 'evtjs';
 import bip39 from 'bip39'
 import axios from 'axios'
@@ -137,3 +137,35 @@ window.getAPPVersion = async() => {
   bridge('getAPPVersionCallback', body)
 }
 
+window.randomValidSymbolId  = () => {
+  let time = 0
+  let symbolId = 0
+  let startStep = 3
+  let endStep = 10
+  let num = 4
+  async function reValid() {
+    try {
+      if (time < num) {
+        symbolId = randomSymbolId(startStep)
+        await window.apiCaller.getFungibleSymbolDetail(symbolId)
+      } else {
+        startStep++
+        time = -1
+        if(startStep==endStep){
+          const error = new Error('random symbolId failed')
+          bridge('getEVTFungibleBalanceListCallback', errorHandle(error))
+          return true
+        }
+      }
+      time++
+      reValid()
+    }catch (error){
+      if(error.serverError&&(error.serverError.code === 3040401)){
+        bridge('getAPPVersionCallback', symbolId)
+      }else{
+        bridge('getEVTFungibleBalanceListCallback', errorHandle(error))
+      }
+    }
+  }
+  reValid()
+}
