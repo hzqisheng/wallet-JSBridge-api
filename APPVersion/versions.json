@@ -1,3 +1,6 @@
 {
-  "version":"1.0.3"
+  "androidVersion":"1.0.0",
+  "iOSVersion":"1.0.4",
+  "isAndroidForceUpdate":false,
+  "isiOSForceUpdate":false
 }

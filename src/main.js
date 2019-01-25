@@ -123,7 +123,7 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
 window.getAPPVersion = async() => {
   let body
   try {
-    let res = await axios.get('http://server-config.hzqisheng.cn/versions.json')
+    let res = await axios.get('http://server-config.hzqisheng.cn/versions.json?t='+Date.now())
     if (res.status == 200) {
       body = res.data
     } else {
