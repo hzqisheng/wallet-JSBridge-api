@@ -153,7 +153,7 @@ window.randomValidSymbolId  = () => {
         time = -1
         if(startStep==endStep){
           const error = new Error('random symbolId failed')
-          bridge('getEVTFungibleBalanceListCallback', errorHandle(error))
+          bridge('getRandomValidSymbolId', errorHandle(error))
           return true
         }
       }
@@ -161,9 +161,9 @@ window.randomValidSymbolId  = () => {
       reValid()
     }catch (error){
       if(error.serverError&&(error.serverError.code === 3040401)){
-        bridge('getAPPVersionCallback', symbolId)
+        bridge('getRandomValidSymbolId', symbolId)
       }else{
-        bridge('getEVTFungibleBalanceListCallback', errorHandle(error))
+        bridge('getRandomValidSymbolId', errorHandle(error))
       }
     }
   }
