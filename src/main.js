@@ -153,7 +153,7 @@ window.randomValidSymbolId  = () => {
         time = -1
         if(startStep==endStep){
           const error = new Error('random symbolId failed')
-          bridge('getRandomValidSymbolId', errorHandle(error))
+          bridge('randomValidSymbolIdCallback', errorHandle(error))
           return true
         }
       }
@@ -161,9 +161,9 @@ window.randomValidSymbolId  = () => {
       reValid()
     }catch (error){
       if(error.serverError&&(error.serverError.code === 3040401)){
-        bridge('getRandomValidSymbolId', symbolId)
+        bridge('randomValidSymbolIdCallback', symbolId)
       }else{
-        bridge('getRandomValidSymbolId', errorHandle(error))
+        bridge('randomValidSymbolIdCallback', errorHandle(error))
       }
     }
   }
