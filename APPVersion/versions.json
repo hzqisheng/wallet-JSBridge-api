@@ -1,6 +1,6 @@
 {
-  "androidVersion":"1.0.0",
-  "iOSVersion":"1.0.5",
-  "isAndroidForceUpdate":false,
-  "isiOSForceUpdate":false
+  "androidVersion":"1.0.6",
+  "iOSVersion":"1.0.6",
+  "isAndroidForceUpdate":true,
+  "isiOSForceUpdate":true
 }

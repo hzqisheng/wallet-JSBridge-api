@@ -58,7 +58,6 @@ window.getEVTFungiblesList = async(publicKeys)=>{
   let body = []
   try {
     let arr = await window.apiCaller.getCreatedFungibles(publicKeys)
-    console.log(arr)
     arr.ids.forEach(item => {
       let detail = window.apiCaller.getFungibleSymbolDetail(item)
       body.push(detail)
@@ -102,7 +101,16 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
   try {
     let arr = await window.apiCaller.getFungibleBalance(publicKeys,symbolId)
     arr.forEach(item => {
-      let detail = window.apiCaller.getFungibleSymbolDetail(Number(item.split('#')[1]))
+      let symbolId = Number(item.split('#')[1])
+      let detail
+      if(symbolId == 1 || symbolId == 2){
+        detail = {
+          metas: []
+        }
+      }else{
+        detail = window.apiCaller.getFungibleSymbolDetail(symbolId)
+      }
+
       body.push(detail)
     })
     Promise.all(body).then((result)=>{
