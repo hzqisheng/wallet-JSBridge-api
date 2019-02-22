@@ -103,9 +103,12 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
     arr.forEach(item => {
       let symbolId = Number(item.split('#')[1])
       let detail
-      if(symbolId == 1 || symbolId == 2){
+      if(symbolId == 2){
         detail = {
-          metas: []
+          metas: [],
+          sym_name: 'PEVT',
+          sym:'5,S#'+symbolId,
+          total_supply:''
         }
       }else{
         detail = window.apiCaller.getFungibleSymbolDetail(symbolId)
