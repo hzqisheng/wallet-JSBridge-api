@@ -28,7 +28,7 @@ npm run lint
 
 > 注意:有一个隐藏needPrivateKey方法是让APP弹出密码框，用needPrivateKeyResponse(privateKey)返回私钥
 
-> 错误处理：所有ServerError返回 `{code:0,data:"",message:"isServerError"}` 其它返回 `{code:0,data:"",message:"isClientError"}`
+> 错误处理：所有ServerError返回 `{code:0,data:"",message:{cn:'isServerError:',en:'isServerError'}}` 其它返回 `{code:0,data:"",message:{cn:'isClientError:',en:'isClientError'}}`
 
 
 ## methodAPI
@@ -97,6 +97,43 @@ password | 是 | string or number | 密码
 	"code": 1,
 	"data": "",
 	"message":""
+}
+```
+
+### changeNetwork(node)
+#### 说明
+切换节点
+
+#### 参数
+- `node`: 由一些有效字段组成的对象
+  - `host`：节点域名
+  - `port`：节点端口号
+  - `protocol`：节点的协议
+
+#### 返回示例
+无返回
+
+### checkNetwork(node)
+#### 说明
+检查节点是否有效
+
+
+#### 参数
+- `node`: 由一些有效字段组成的对象
+  - `host`：节点域名
+  - `port`：节点端口号
+  - `protocol`：节点的协议
+
+#### 返回示例
+code为0表示节点无效
+```
+{
+	"code": 0,
+	"data": "",
+	"message": {
+		"cn": "isClientError:Invalid node",
+		"en": "isClientError:Invalid node"
+	}
 }
 ```
 
@@ -316,6 +353,10 @@ symbolId | 否 | number | symbolId
 ### randomName128()
 
 ### getNullAddress()
+
+### changeNetwork(node)
+
+### checkNetwork(node)
 
 ### EVTInit()
 

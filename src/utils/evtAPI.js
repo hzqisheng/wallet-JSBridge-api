@@ -124,6 +124,20 @@ window.changeNetwork = (obj) => {
   network = toJson(obj)
 }
 
+window.checkNetwork = async (network) => {
+  let body = ''
+  let EVTCopy = EVT({
+    endpoint: network
+  });
+  try {
+    body = await EVTCopy.getInfo()
+  } catch (err) {
+    const error = new Error('Invalid node')
+    body = errorHandle(error)
+  }
+  bridge('checkNetworkCallback', body)
+}
+
 window.EVTInit = () => {
   let body = ''
   try {
