@@ -127,7 +127,7 @@ window.changeNetwork = (obj) => {
 window.checkNetwork = async (network) => {
   let body = ''
   let EVTCopy = EVT({
-    endpoint: network
+    endpoint: toJson(network)
   });
   try {
     body = await EVTCopy.getInfo()
