@@ -1,9 +1,10 @@
 import './utils/evtAPI'
 import './utils/bip39API'
 import {bridge,errorHandle,randomSymbolId} from './utils/bridge'
-import EVT from 'evtjs';
+// import EVT from 'evtjs';
 import bip39 from 'bip39'
 import axios from 'axios'
+import '../public/evt.min';
 
 // create EVTWallet
 window.createEVTWallet = async (password) => {

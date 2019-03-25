@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/12/5.
  */
 
-import EVT from 'evtjs';
+// import EVT from 'evtjs';
 import {bridge,errorHandle,toJson,toStringify} from './bridge'
 
 

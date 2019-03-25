@@ -1656,7 +1656,7 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-base-x@^3.0.2, base-x@^3.0.5:
+base-x@^3.0.2:
   version "3.0.5"
   resolved "http://registry.npm.taobao.org/base-x/download/base-x-3.0.5.tgz#d3ada59afed05b921ab581ec3112e6444ba0795a"
   dependencies:
@@ -3123,18 +3123,27 @@ evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
     md5.js "^1.3.4"
     safe-buffer "^5.1.1"
 
-evtjs@^5.2.0:
-  version "5.2.0"
-  resolved "http://registry.npm.taobao.org/evtjs/download/evtjs-5.2.0.tgz#c272d3f414d98c806d3d359af65f6907f7f43b6d"
+evt-fcbuffer@^2.2.0:
+  version "2.2.2"
+  resolved "http://registry.npm.taobao.org/evt-fcbuffer/download/evt-fcbuffer-2.2.2.tgz#eb0d237d18d879ed0fcfcf6ad3d6ec1fa381ad3d"
+  integrity sha1-6w0jfRjYee0Pz89q09bsH6OBrT0=
+  dependencies:
+    bn.js "^4.11.8"
+    bytebuffer "^5.0.1"
+    ieee-float "^0.6.0"
+
+evtjs@^5.3.1:
+  version "5.3.1"
+  resolved "http://registry.npm.taobao.org/evtjs/download/evtjs-5.3.1.tgz#63cb980787fd8144cab5d30cee1e77d31fc0ffef"
+  integrity sha1-Y8uYB4f9gUTKtdMM7h530x/A/+8=
   dependencies:
     babel-preset-env "^1.7.0"
-    base-x "^3.0.5"
     bigi "^1.4.2"
     bs58 "^4.0.1"
     create-hash "^1.1.3"
     create-hmac "^1.1.7"
     ecurve "^1.0.6"
-    fcbuffer "^2.2.0"
+    evt-fcbuffer "^2.2.0"
     qrcode "^1.2.0"
     randombytes "^2.0.6"
     ripemd160 "^2.0.2"
@@ -3320,14 +3329,6 @@ faye-websocket@~0.11.1:
   resolved "http://registry.npm.taobao.org/faye-websocket/download/faye-websocket-0.11.1.tgz#f0efe18c4f56e4f40afc7e06c719fd5ee6188f38"
   dependencies:
     websocket-driver ">=0.5.1"
-
-fcbuffer@^2.2.0:
-  version "2.2.2"
-  resolved "http://registry.npm.taobao.org/fcbuffer/download/fcbuffer-2.2.2.tgz#987d10062c46a8bfea27da77c964f43e9e25a014"
-  dependencies:
-    bn.js "^4.11.8"
-    bytebuffer "^5.0.1"
-    ieee-float "^0.6.0"
 
 figgy-pudding@^3.1.0, figgy-pudding@^3.5.1:
   version "3.5.1"
