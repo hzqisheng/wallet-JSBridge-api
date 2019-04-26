@@ -111,7 +111,14 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
           sym:'5,S#'+symbolId,
           total_supply:''
         }
-      }else{
+      } else if (symbolId == 1){
+          detail = {
+            metas: [],
+            sym_name: 'EVT',
+            sym: '5,S#' + symbolId,
+            total_supply: ''
+          }
+      } else {
         detail = window.apiCaller.getFungibleSymbolDetail(symbolId)
       }
 
