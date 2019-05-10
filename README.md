@@ -415,7 +415,7 @@ symbolId | 否 | number | symbolId
   - `maxCharge`：对于任何需要交易费用的交易, 您必须提供此参数以限制您可能收取的最高费用.
   - `expiration`：事务的到期时间（ISO-8601）. 例如：“2018-10-29T02：47：40”.
   - “付款人”：指定哪个用户应支付交易费用. 它是可选的, 如果你没有传递一个值, 它将自动填充keyProvider中的键（如果只提供了一个键）.
-- `domain`和`key`: 像addmeta操作必须要传，大部分操作会自动填充(可选)[查看详情]（https://www.everitoken.io/developers/apis,_sdks_and_tools/api_reference#post-v1-chain-trx_json_to_digest）
+- `domain`和`key`: 像addmeta操作必须要传，大部分操作会自动填充(可选)[查看详情](https://www.everitoken.io/developers/apis,_sdks_and_tools/api_reference#post-v1-chain-trx_json_to_digest)
 #### 返回示例
 ```
 {
