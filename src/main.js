@@ -101,7 +101,12 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
   let body = []
   try {
     let arr = await window.apiCaller.getFungibleBalance(publicKeys,symbolId)
-    arr.forEach(item => {
+    let arrCopy = arr.filter(item=>{
+      let symbolId = Number(item.split('#')[1])
+      let num = Number(item.split(' ')[0])
+      return symbolId == 1 || num != 0
+    })
+    arrCopy.forEach(item => {
       let symbolId = Number(item.split('#')[1])
       let detail
       if(symbolId == 2){
@@ -121,11 +126,10 @@ window.getEVTFungibleBalanceList = async(publicKeys,symbolId)=>{
       } else {
         detail = window.apiCaller.getFungibleSymbolDetail(symbolId)
       }
-
       body.push(detail)
     })
     Promise.all(body).then((result)=>{
-      arr.forEach((item,i)=>{
+      arrCopy.forEach((item, i) => {
         result[i].asset = item
       })
       bridge('getEVTFungibleBalanceListCallback', result)
