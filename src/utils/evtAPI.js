@@ -115,7 +115,7 @@ let apiCaller = null
 window.needPrivateKeyResponse = null
 
 let network = {
-  host: 'mainnet14.everitoken.io',
+  host: 'mainnet14.evtnd.com',
   port: 443,
   protocol: 'https'
 };
